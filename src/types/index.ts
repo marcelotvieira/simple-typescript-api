@@ -3,4 +3,14 @@ interface IProduct {
   amount: string
 }
 
-export default IProduct;
+interface IUser {
+  username: string,
+  vocation: string,
+  level: number,
+  password: string,
+}
+
+export {
+  IProduct,
+  IUser,
+};

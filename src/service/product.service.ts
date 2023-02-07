@@ -1,4 +1,5 @@
-import { getAll, insert, IProduct } from '../models/product.model';
+import { getAll, insert } from '../models/product.model';
+import { IProduct } from '../types';
 
 const getAllProducts = async (): Promise<object> => {
   const products: object = await getAll();
