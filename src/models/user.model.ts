@@ -1,5 +1,5 @@
 import connection from './connection';
-import { IUser } from '../types';
+import { ILoginResponse, IUser, IUserLogin } from '../types';
 
 const insert = async (data: IUser): Promise<object> => {
   const [response] = await connection.execute(
@@ -10,4 +10,17 @@ const insert = async (data: IUser): Promise<object> => {
   return response;
 };
 
-export default insert;
+const userAuthenticate = async (data: IUserLogin) => {
+  const [response] = await connection.execute(
+    `SELECT * FROM Trybesmith.users
+    WHERE username = ? AND password = ?`,
+    [data.username, data.password],
+  );
+  const binaryRow = response as ILoginResponse[];
+  return binaryRow;
+};
+
+export {
+  insert, 
+  userAuthenticate,
+};
