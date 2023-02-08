@@ -3,7 +3,7 @@ import { getAllProducts, insertProduct } from '../service/product.service';
 
 const getProducts = async (_req: Request, res: Response) => {
   const rows: object = await getAllProducts();
-  res.status(200).send(rows);
+  res.status(200).json(rows);
 };
 
 const insertNewProduct = async (req: Request, res: Response) => {
